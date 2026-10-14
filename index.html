@@ -13,11 +13,22 @@
                 extend: {
                     colors: {
                         dark: {
-                            900: '#0b0f17',
-                            800: '#111827',
-                            700: '#1f2937',
-                            600: '#374151'
+                            950: '#030305',
+                            900: '#08080c',
+                            800: '#101018',
+                            700: '#1a1a24',
+                            600: '#262636'
+                        },
+                        red: {
+                            glow: '#ff1e43',
+                            accent: '#e11d48',
+                            dark: '#9f1239'
                         }
+                    },
+                    boxShadow: {
+                        'glow-red': '0 0 25px -5px rgba(255, 30, 67, 0.4)',
+                        'glow-red-lg': '0 0 45px -5px rgba(255, 30, 67, 0.6)',
+                        'glow-red-sm': '0 0 12px rgba(255, 30, 67, 0.3)'
                     }
                 }
             }
@@ -29,40 +40,79 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"></script>
     <style>
         body {
-            background-color: #090d16;
-            color: #f3f4f6;
+            background-color: #030305;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(255, 30, 67, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(225, 29, 72, 0.08) 0%, transparent 45%);
+            background-attachment: fixed;
+            color: #f8fafc;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            overflow-x: hidden;
         }
+
+        /* Glassmorphism noir et rouge ultra-fluide */
         .glass-card {
-            background: rgba(17, 24, 39, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(10, 10, 15, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 30, 67, 0.18);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5), 0 0 15px 0 rgba(255, 30, 67, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
+        .glass-card:hover {
+            border-color: rgba(255, 30, 67, 0.4);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.7), 0 0 25px 2px rgba(255, 30, 67, 0.2);
+            transform: translateY(-2px);
+        }
+
         .glass-input {
-            background: rgba(15, 23, 42, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            color: #f3f4f6;
+            background: rgba(16, 16, 24, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 30, 67, 0.2);
+            color: #f8fafc;
+            transition: all 0.25s ease;
         }
+
         .glass-input:focus {
-            border-color: #6366f1;
+            border-color: #ff1e43;
             outline: none;
-            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.25);
+            box-shadow: 0 0 0 3px rgba(255, 30, 67, 0.25), 0 0 20px rgba(255, 30, 67, 0.3);
+            background: rgba(20, 20, 30, 0.9);
         }
+
+        /* Boutons glowy */
+        .glow-btn {
+            background: linear-gradient(135deg, #ff1e43 0%, #be123c 100%);
+            box-shadow: 0 0 20px rgba(255, 30, 67, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .glow-btn:hover {
+            box-shadow: 0 0 30px rgba(255, 30, 67, 0.7);
+            filter: brightness(1.1);
+            transform: scale(1.02);
+        }
+
+        /* Scrollbar personnalisée néon rouge */
         .custom-scrollbar::-webkit-scrollbar {
             width: 6px;
             height: 6px;
         }
         .custom-scrollbar::-webkit-scrollbar-track {
-            background: rgba(15, 23, 42, 0.6);
+            background: rgba(8, 8, 12, 0.8);
         }
         .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 4px;
+            background: rgba(255, 30, 67, 0.3);
+            border-radius: 9999px;
+            box-shadow: 0 0 10px rgba(255, 30, 67, 0.5);
         }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 30, 67, 0.7);
         }
     </style>
+
 </head>
 <body class="min-h-screen custom-scrollbar flex flex-col">
 
